@@ -6,6 +6,14 @@
   --gray-color: #373e4e;
   --dgray-color: #252a35;
 }
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 html {
   background-color: var(--bg-color);
+  font-size: 16px;
 }
