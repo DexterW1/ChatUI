@@ -1,0 +1,11 @@
+:root {
+  --bg-color: #292f3f;
+  --blue-color: #03a9f1;
+  --blue-hover-color: #0d99ff;
+  --white-color: #ffffff;
+  --gray-color: #373e4e;
+  --dgray-color: #252a35;
+}
+html {
+  background-color: var(--bg-color);
+}
