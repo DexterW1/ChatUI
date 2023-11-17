@@ -5,6 +5,8 @@
   --white-color: #ffffff;
   --gray-color: #373e4e;
   --dgray-color: #252a35;
+  --shadow-1: 0px 1px 3px hsla(0, 0%, 0%, 0.5);
+  --shadow-2: 0px 3px 6px hsla(0, 0%, 0%, 0.4);
 }
 *,
 *::before,
@@ -13,7 +15,20 @@
   padding: 0;
   box-sizing: border-box;
 }
+button,
+input[type="submit"],
+input[type="reset"] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
 html {
   background-color: var(--bg-color);
   font-size: 16px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
 }

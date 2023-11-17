@@ -1,0 +1,71 @@
+.login-container {
+  width: 100vw;
+  height: 100vh;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  padding: 30vh 10vw;
+}
+.login-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  background-color: var(--dgray-color);
+  padding: 3vh 5vw;
+  /* border: 1px solid green; */
+  box-shadow: var(--shadow-2);
+}
+.form-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.login-card h1 {
+  color: white;
+}
+.login-input {
+  font-family: inherit;
+
+  border-radius: 20px;
+  border: none;
+  padding-left: 4vw;
+  width: 100%;
+  height: 4vh;
+  outline: none;
+}
+.email-container,
+.password-container,
+.button-container {
+  margin-bottom: 2vh;
+}
+.button-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.signup-container {
+  display: flex;
+  justify-content: center;
+  /* border: 1px solid red; */
+  color: rgb(145, 145, 145);
+}
+.signup-container a {
+  margin-left: 2vw;
+  outline: none;
+  color: var(--blue-color);
+  text-decoration: none;
+}
+
+#submit-login-btn {
+  width: 80%;
+  height: 3vh;
+  background-color: var(--blue-color);
+  border-radius: 20px;
+  color: var(--white-color);
+}
+#submit-login-btn:hover {
+  background-color: var(--blue-hover-color);
+}
