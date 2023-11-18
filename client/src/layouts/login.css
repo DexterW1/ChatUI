@@ -1,10 +1,10 @@
 .login-container {
-  width: 100vw;
-  height: 100vh;
+  width: 100svw;
+  height: 100svh;
   /* border: 1px solid red; */
   display: flex;
   justify-content: center;
-  padding: 30vh 10vw;
+  padding: 30svh 10svw;
 }
 .login-card {
   width: 100%;

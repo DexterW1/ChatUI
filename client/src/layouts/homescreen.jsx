@@ -3,8 +3,11 @@ import { useState, useEffect } from "react";
 export default function Homescreen({ user, handleSignout }) {
   return (
     <>
-      <button onClick={handleSignout}>Signout</button>
-      <h1>Hi! {user.displayName}</h1>
+      <div className="home-container">
+        <button onClick={handleSignout}>Signout</button>
+        <h1>Hi! {user.displayName}</h1>
+        You can se meeFront End (React) Developer - W2 - Irvine, CA
+      </div>
     </>
   );
 }
