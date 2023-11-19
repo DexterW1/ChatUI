@@ -12,9 +12,8 @@ function App() {
   const handleSignout = () => {
     signOut(auth)
       .then(() => {
-        console.log("Signed out");
-        console.log(user);
         setUser(null);
+        localStorage.removeItem("user");
         // Sign-out successful.
       })
       .catch((error) => {
@@ -23,8 +22,11 @@ function App() {
       });
   };
   useEffect(() => {
-    console.log("This is user set from APP", user);
-  }, [user]);
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
   return (
     <>
       <BrowserRouter>

@@ -1,5 +1,6 @@
 import "./homescreen.css";
 import { useState, useEffect } from "react";
+import { StreamChat } from "stream-chat";
 export default function Homescreen({ user, handleSignout }) {
   return (
     <>

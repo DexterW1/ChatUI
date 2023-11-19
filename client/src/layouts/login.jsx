@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { StreamChat } from "stream-chat";
 import { app } from "../firebase";
 import "./login.css";
+
 const auth = getAuth();
+
 export default function Login({ setUser }) {
   const location = useLocation();
   const [activeLink, setActiveLink] = useState("");
@@ -17,12 +20,13 @@ export default function Login({ setUser }) {
   const handleLogin = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, formData.email, formData.password)
-      .then((userCredential) => {
+      .then(async (userCredential) => {
         // Signed in
         console.log("Signed in");
         const user = userCredential.user;
         console.log(user);
         setUser(user);
+        localStorage.setItem("user", JSON.stringify(user));
         // ...
       })
       .catch((error) => {
@@ -37,6 +41,12 @@ export default function Login({ setUser }) {
       [name]: value,
     }));
   };
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, [setUser]);
   return (
     <>
       <div className="login-container">
