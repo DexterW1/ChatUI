@@ -1,0 +1,36 @@
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid red; */
+  background-color: var(--dgray-color);
+  padding: 1rem;
+  width: 100%;
+  border-radius: 20px;
+}
+.card {
+  width: 100%;
+  display: flex;
+  color: white;
+  /* border: 1px solid yellow; */
+  border-bottom: 1px solid var(--gray-color);
+}
+.card-preview {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
+  /* border: 1px solid green; */
+  padding-left: 0.5rem;
+}
+.card-preview h1 {
+  font-size: 1rem;
+}
+.card-image-container {
+  display: flex;
+  align-items: center;
+}
+.card-image-container img {
+  width: 4rem;
+  border-radius: 100%;
+  object-fit: cover;
+}

@@ -4,29 +4,32 @@ import Login from "./layouts/login";
 import Register from "./components/register";
 import Homescreen from "./layouts/homescreen";
 import { app } from "./firebase";
-import { getAuth, signOut } from "firebase/auth";
+import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 import "./App.css";
 const auth = getAuth();
 function App() {
   const [user, setUser] = useState(null);
+  const [chatClient, setChatClient] = useState(null);
   const handleSignout = () => {
     signOut(auth)
       .then(() => {
         setUser(null);
+        setChatClient(null);
         localStorage.removeItem("user");
+        localStorage.removeItem("streamuser");
         // Sign-out successful.
       })
       .catch((error) => {
         console.log(error);
         // An error happened.
       });
+    chatClient.disconnectUser();
   };
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setUser(user);
     }
-  }, []);
+  });
   return (
     <>
       <BrowserRouter>
@@ -36,9 +39,14 @@ function App() {
             exact
             element={
               user ? (
-                <Homescreen user={user} handleSignout={handleSignout} />
+                <Homescreen
+                  chatClient={chatClient}
+                  setChatClient={setChatClient}
+                  user={user}
+                  handleSignout={handleSignout}
+                />
               ) : (
-                <Login setUser={setUser} />
+                <Login setChatClient={setChatClient} setUser={setUser} />
               )
             }
           />

@@ -1,5 +1,22 @@
 .home-container {
-  padding: 5svh 5svw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* padding: 5svh 5svw; */
   width: 100svw;
-  height: 100svh;
+  /* height: 100svh; */
+}
+.chat-container {
+  border: 1px solid green;
+  /* padding-bottom: 50rem; */
+}
+.channelList {
+  color: red;
+}
+@media (min-width: 1500px) {
+  .home-container {
+    width: 100vw;
+    height: 100vh;
+    border: 3px solid red;
+  }
 }
