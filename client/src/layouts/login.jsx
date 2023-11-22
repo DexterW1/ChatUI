@@ -17,25 +17,24 @@ export default function Login({ setUser, setChatClient }) {
     signInWithEmailAndPassword(auth, formData.email, formData.password)
       .then(async (userCredential) => {
         // Signed in
-        console.log("Re entered handleLogin");
-        const user = userCredential.user;
-        console.log(user);
-        setUser(user);
-        localStorage.setItem("user", JSON.stringify(user));
-        const streamUser = {
-          id: user.uid,
-          name: user.displayName,
-          image: "https://picsum.photos/200",
-        };
-        localStorage.setItem("streamuser", JSON.stringify(streamUser));
-        const chatClient = StreamChat.getInstance(
-          import.meta.env.VITE_STREAM_API_KEY
-        );
-        console.log(chatClient);
-        await chatClient.connectUser(streamUser, chatClient.devToken(user.uid));
-        console.log(chatClient);
+        // console.log("Re entered handleLogin");
+        // const user = userCredential.user;
+        // console.log(user);
+        // setUser(user);
+        // localStorage.setItem("user", JSON.stringify(user));
+        // const streamUser = {
+        //   id: user.uid,
+        //   name: user.displayName,
+        //   image: "https://picsum.photos/200",
+        // };
+        // localStorage.setItem("streamuser", JSON.stringify(streamUser));
+        // const chatClient = StreamChat.getInstance(
+        //   import.meta.env.VITE_STREAM_API_KEY
+        // );
+        // await chatClient.connectUser(streamUser, chatClient.devToken(user.uid));
         // console.log(chatClient);
-        setChatClient(chatClient);
+        // // console.log(chatClient);
+        // setChatClient(chatClient);
         // ...
       })
       .catch((error) => {
@@ -51,11 +50,12 @@ export default function Login({ setUser, setChatClient }) {
     }));
   };
   useEffect(() => {
+    const storedStreamUser = JSON.parse(localStorage.getItem("streamuser"));
     const init = async () => {
       const chatClient = StreamChat.getInstance(
         import.meta.env.VITE_STREAM_API_KEY
       );
-      setChatClient(chatClient);
+      // setChatClient(chatClient);
       // Connect the user using the stored token
       const storedStreamUser = JSON.parse(localStorage.getItem("streamuser"));
       if (storedStreamUser) {
@@ -65,13 +65,18 @@ export default function Login({ setUser, setChatClient }) {
         );
         console.log("This is in reinit", chatClient);
         setUser(storedStreamUser);
+        setChatClient(chatClient);
       } else {
         console.log("No stored user found");
+        setUser(null);
         // setUser(undefined);
       }
     };
-    init();
-  }, [setChatClient]);
+    if (storedStreamUser) {
+      console.log("Entered init");
+      init();
+    }
+  }, []);
   return (
     <>
       <div className="login-container">

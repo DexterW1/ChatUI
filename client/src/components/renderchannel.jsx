@@ -31,6 +31,7 @@ export default function Renderchannel({ chatClient, setChannelID }) {
   const [channelData, setChannelData] = useState(null);
   const [channel, setChannel] = useState(null);
   useEffect(() => {
+    console.log("This is chatClient right before filter", chatClient);
     const filter = {
       type: "messaging",
       members: { $in: [chatClient.user.id] },
