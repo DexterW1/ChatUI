@@ -4,11 +4,21 @@
   align-items: center;
   /* padding: 5svh 5svw; */
   width: 100svw;
-  /* height: 100svh; */
+  height: 100svh;
+  font-size: 1rem;
 }
 .chat-container {
-  border: 1px solid green;
+  /* border: 1px solid green; */
   /* padding-bottom: 50rem; */
+}
+.home-container h1 {
+  font-size: 1rem;
+}
+.signoutBtn {
+  margin-left: 1rem;
+  background-color: var(--blue-color);
+  border-radius: 10px;
+  padding: 0.5rem;
 }
 .channelList {
   color: red;

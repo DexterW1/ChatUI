@@ -1,0 +1,12 @@
+.nav-container {
+  border: 1px solid red;
+}
+.nav-container ul {
+  display: flex;
+  justify-content: space-evenly;
+  text-decoration: none;
+  list-style: none;
+}
+li a {
+  text-decoration: none;
+}

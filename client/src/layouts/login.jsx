@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { StreamChat } from "stream-chat";
 import { app } from "../firebase";
@@ -8,15 +8,10 @@ import "./login.css";
 const auth = getAuth();
 
 export default function Login({ setUser, setChatClient }) {
-  const location = useLocation();
-  const [activeLink, setActiveLink] = useState("");
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  useEffect(() => {
-    setActiveLink(location.pathname);
-  }, [location]);
   const handleLogin = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, formData.email, formData.password)
@@ -56,24 +51,6 @@ export default function Login({ setUser, setChatClient }) {
     }));
   };
   useEffect(() => {
-    // const init = async () => {
-    //   const storedUser = JSON.parse(localStorage.getItem("user"));
-    //   if (storedUser) {
-    //     setUser(storedUser);
-    //   }
-    //   const storedStreamUser = JSON.parse(localStorage.getItem("streamuser"));
-    //   console.log("entered reinit");
-    //   console.log(storedStreamUser);
-    //   const chatClient = StreamChat.getInstance(
-    //     import.meta.env.VITE_STREAM_API_KEY
-    //   );
-    //   await chatClient.connectUser(
-    //     storedStreamUser,
-    //     chatClient.devToken(storedStreamUser.id)
-    //   );
-    //   console.log("This is in reinit", chatClient);
-    //   setChatClient(chatClient);
-    // };
     const init = async () => {
       const chatClient = StreamChat.getInstance(
         import.meta.env.VITE_STREAM_API_KEY
@@ -90,6 +67,7 @@ export default function Login({ setUser, setChatClient }) {
         setUser(storedStreamUser);
       } else {
         console.log("No stored user found");
+        // setUser(undefined);
       }
     };
     init();
@@ -127,7 +105,7 @@ export default function Login({ setUser, setChatClient }) {
             </div>
             <div className="signup-container">
               <p>Don't have an account?</p>
-              <Link to="/Register">Register</Link>
+              {/* <Link to="/Register">Register</Link> */}
             </div>
           </form>
         </div>

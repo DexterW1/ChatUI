@@ -1,6 +1,7 @@
 import "./homescreen.css";
 import { useState, useEffect } from "react";
 import { StreamChat } from "stream-chat";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {
   Chat,
   Channel,
@@ -13,17 +14,18 @@ import {
   ChannelList,
 } from "stream-chat-react";
 import "stream-chat-react/dist/css/index.css";
-import Sidebar from "../components/sidebar";
+import Sidebar from "../components/renderchannel";
+import Nav from "../components/nav";
+import Register from "../components/register";
+import Rendermessage from "../components/rendermessage";
+import Renderchannel from "../components/renderchannel";
 export default function Homescreen({
   user,
   handleSignout,
   chatClient,
   setChatClient,
 }) {
-  const filter = { type: "messaging", members: { $in: [user.uid] } };
-  const sort = { last_message_at: -1 };
-  const [channelName, setChannelName] = useState("");
-  // const [channel, setChannel] = useState(null);
+  const [channelID, setChannelID] = useState(null);
   const handleCreateChannel = async () => {
     const channel = chatClient.channel("messaging", "redbull", {
       image: "https://picsum.photos/200",
@@ -33,42 +35,40 @@ export default function Homescreen({
     await channel.watch();
     console.log(chatClient);
   };
+  console.log("THis is channelID", channelID);
   return (
     <>
-      <div className="home-container">
-        <h1>
-          Hi! {user.displayName}{" "}
-          <button onClick={handleSignout}>Signout</button>
-        </h1>
-
-        {/* <Chat client={chatClient} theme="messaging dark">
-          <ChannelList sort={sort} filters={filter} />
-          <Channel />
-        </Chat> */}
-        <Sidebar chatClient={chatClient} />
-        <div className="chat-container">
-          {/* <Chat client={chatClient} theme="messaging dark">
-            <ChannelList className="channellist" sort={sort} filters={filter} />
-            <Channel>
-              <Window>
-                <ChannelHeader />
-                <MessageList />
-                <MessageInput />
-              </Window>
-            </Channel>
-          </Chat> */}
+      <BrowserRouter>
+        <div className="home-content-container">
+          <Routes>
+            <Route
+              path="/"
+              exact
+              element={
+                <Renderchannel
+                  chatClient={chatClient}
+                  setChannelID={setChannelID}
+                />
+              }
+            />
+            <Route path="/Register" element={<Register />} />
+            {channelID && (
+              <Route
+                path={`/Messages/{${channelID.id}}`}
+                element={
+                  <Rendermessage channel={channelID} chatClient={chatClient} />
+                }
+              />
+            )}
+          </Routes>
         </div>
-
-        {/* <Chat client={chatClient} theme="messaging dark">
-          <Channel channel={channel}>
-            <Window>
-              <ChannelHeader />
-              <MessageList />
-              <MessageInput />
-            </Window>
-          </Channel>
-        </Chat> */}
-      </div>
+        <div className="home-nav-container">
+          <Nav />
+          <button className="signoutBtn" onClick={handleSignout}>
+            Signout
+          </button>
+        </div>
+      </BrowserRouter>
     </>
   );
 }

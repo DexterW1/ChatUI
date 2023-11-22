@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./layouts/login";
-import Register from "./components/register";
 import Homescreen from "./layouts/homescreen";
+import Nav from "./components/nav";
 import { app } from "./firebase";
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 import "./App.css";
@@ -32,27 +32,16 @@ function App() {
   });
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            exact
-            element={
-              user ? (
-                <Homescreen
-                  chatClient={chatClient}
-                  setChatClient={setChatClient}
-                  user={user}
-                  handleSignout={handleSignout}
-                />
-              ) : (
-                <Login setChatClient={setChatClient} setUser={setUser} />
-              )
-            }
-          />
-          <Route path="/Register" element={<Register />} />
-        </Routes>
-      </BrowserRouter>
+      {user ? (
+        <Homescreen
+          chatClient={chatClient}
+          setChatClient={setChatClient}
+          user={user}
+          handleSignout={handleSignout}
+        />
+      ) : (
+        <Login setChatClient={setChatClient} setUser={setUser} />
+      )}
     </>
   );
 }

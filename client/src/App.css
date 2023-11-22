@@ -5,6 +5,7 @@
   --white-color: #ffffff;
   --gray-color: #373e4e;
   --dgray-color: #252a35;
+  --outline-color: rgba(124, 124, 124, 0.8);
   --shadow-1: 0px 1px 3px hsla(0, 0%, 0%, 0.5);
   --shadow-2: 0px 3px 6px hsla(0, 0%, 0%, 0.4);
 }
