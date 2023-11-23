@@ -1,5 +1,7 @@
 .nav-container {
-  border: 1px solid red;
+  /* border: 1px solid red; */
+  width: 100%;
+  padding: 1rem;
 }
 .nav-container ul {
   display: flex;
@@ -7,6 +9,13 @@
   text-decoration: none;
   list-style: none;
 }
-li a {
+ion-icon {
+  color: white;
+  font-size: 1.3rem;
+}
+li a,
+button {
   text-decoration: none;
+  color: white;
+  outline: none;
 }

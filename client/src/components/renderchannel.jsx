@@ -61,6 +61,14 @@ export default function Renderchannel({ chatClient, setChannelID }) {
   const sort = { last_message_at: -1 };
   return (
     <>
+      <div className="channel-container">
+        <button className=" channel-container-btn delete-channel-btn">
+          <ion-icon name="close-circle-outline"></ion-icon>
+        </button>
+        <button className="channel-container-btn create-channel-btn">
+          <ion-icon name="create-outline"></ion-icon>
+        </button>
+      </div>
       <div className="sidebar-container">
         {channelData.map((item) => (
           <Link
@@ -93,11 +101,7 @@ export default function Renderchannel({ chatClient, setChannelID }) {
             </div>
           </Link>
         ))}
-        {channel && <Rendermessage chatClient={chatClient} channel={channel} />}
-        {/* <Chat client={chatClient}>
-          <ChannelList filters={filter} sort={sort} />
-          <Channel />
-        </Chat> */}
+        {/* {channel && <Rendermessage chatClient={chatClient} channel={channel} />} */}
       </div>
     </>
   );

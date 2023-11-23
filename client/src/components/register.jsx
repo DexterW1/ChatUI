@@ -1,7 +1,5 @@
 import "./register.css";
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-// import app from "../firebase";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -9,9 +7,7 @@ import {
 } from "firebase/auth";
 import { app } from "../firebase";
 const auth = getAuth();
-export default function Register() {
-  const location = useLocation();
-  const [activeLink, setActiveLink] = useState("");
+export default function Register({ handleRegistrationToggle }) {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -52,9 +48,6 @@ export default function Register() {
       [name]: value,
     }));
   };
-  useEffect(() => {
-    setActiveLink(location.pathname);
-  }, [location]);
   return (
     <>
       <div className="register-container">
@@ -107,9 +100,9 @@ export default function Register() {
               </div>
             )}
             <div className="backbtn-container">
-              <Link to="/">
+              <button onClick={handleRegistrationToggle}>
                 <ion-icon name="arrow-back-outline"></ion-icon>
-              </Link>
+              </button>
             </div>
           </form>
         </div>

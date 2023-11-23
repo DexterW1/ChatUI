@@ -59,12 +59,6 @@ function App() {
 
     return () => unsubscribe();
   }, []);
-
-  if (loading) {
-    // Return a loading indicator or any UI while authentication state is being checked
-    return <div>Loading...</div>;
-  }
-
   return (
     <>
       {user !== null ? (

@@ -16,6 +16,9 @@ export default function Rendermessage({ channel, chatClient }) {
         <Channel channel={channel}>
           <div className="window-container">
             <Window>
+              <div className="channelHeader">
+                <h2>{channel.data.name}</h2>
+              </div>
               <MessageList />
               <MessageInput />
             </Window>

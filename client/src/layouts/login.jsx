@@ -4,7 +4,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { StreamChat } from "stream-chat";
 import { app } from "../firebase";
 import "./login.css";
-
+import Register from "../components/register";
 const auth = getAuth();
 
 export default function Login({ setUser, setChatClient }) {
@@ -12,6 +12,10 @@ export default function Login({ setUser, setChatClient }) {
     email: "",
     password: "",
   });
+  const [showRegistration, setShowRegistration] = useState(false);
+  const handleRegistrationToggle = () => {
+    setShowRegistration(!showRegistration);
+  };
   const handleLogin = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, formData.email, formData.password)
@@ -69,7 +73,6 @@ export default function Login({ setUser, setChatClient }) {
       } else {
         console.log("No stored user found");
         setUser(null);
-        // setUser(undefined);
       }
     };
     if (storedStreamUser) {
@@ -79,7 +82,45 @@ export default function Login({ setUser, setChatClient }) {
   }, []);
   return (
     <>
-      <div className="login-container">
+      {!showRegistration && (
+        <div className="login-container">
+          <div className="login-card">
+            <h1>Login</h1>
+            <form className="form-container" onSubmit={handleLogin}>
+              <div className="email-container">
+                <input
+                  className="login-input"
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="Email Address"
+                />
+              </div>
+              <div className="password-container">
+                <input
+                  className="login-input"
+                  type="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleInputChange}
+                  placeholder="••••••••••"
+                />
+              </div>
+              <div className="button-container">
+                <button id="submit-login-btn" type="submit">
+                  Login
+                </button>
+              </div>
+              <div className="signup-container">
+                <p>Don't have an account?</p>
+                <a onClick={handleRegistrationToggle}>Register</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+      {/* <div className="login-container">
         <div className="login-card">
           <h1>Login</h1>
           <form className="form-container" onSubmit={handleLogin}>
@@ -110,11 +151,15 @@ export default function Login({ setUser, setChatClient }) {
             </div>
             <div className="signup-container">
               <p>Don't have an account?</p>
-              {/* <Link to="/Register">Register</Link> */}
+              <a onClick={handleRegistrationToggle}>Register</a>
             </div>
           </form>
         </div>
-      </div>
+      </div> */}
+
+      {showRegistration && (
+        <Register handleRegistrationToggle={handleRegistrationToggle} />
+      )}
     </>
   );
 }

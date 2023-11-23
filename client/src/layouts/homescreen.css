@@ -1,3 +1,11 @@
+.homescreen-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between */
+  height: 100svh;
+}
+
 .home-container {
   display: flex;
   flex-direction: column;
@@ -22,6 +30,15 @@
 }
 .channelList {
   color: red;
+}
+.home-nav-container {
+  position: absolute;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: rgb(54, 54, 54);
+  width: 100%;
+  bottom: 0;
+  left: 0;
 }
 @media (min-width: 1500px) {
   .home-container {

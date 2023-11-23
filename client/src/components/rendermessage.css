@@ -1,14 +1,19 @@
 .message-container {
-  border: 1px solid blue;
-  /* max-height: 90vh; */
+  /* display: flex;
+  flex-direction: column; */
+  /* border: 1px solid blue; */
+  overflow-y: hidden;
+  max-height: 94.5svh;
+  /* margin-bottom: 20rem; */
   /* padding-bottom: 50rem; */
   /* padding-top: 20rem; */
 }
 .window-container {
   width: 100%;
+  margin-bottom: 24.5svh;
   /* height: %; */
-  padding-bottom: 10rem;
+  /* padding-bottom: 21svh; */
 }
 .message-container {
-  height: 80%;
+  /* height: 50%; */
 }

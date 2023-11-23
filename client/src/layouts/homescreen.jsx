@@ -39,7 +39,41 @@ export default function Homescreen({
   return (
     <>
       <BrowserRouter>
-        <div className="home-content-container">
+        <div className="homescreen-container">
+          <div className="home-content-container">
+            <Routes>
+              <Route
+                path="/"
+                exact
+                element={
+                  <Renderchannel
+                    chatClient={chatClient}
+                    setChannelID={setChannelID}
+                  />
+                }
+              />
+              <Route path="/Register" element={<Register />} />
+              {channelID && (
+                <Route
+                  path={`/Messages/{${channelID.id}}`}
+                  element={
+                    <Rendermessage
+                      channel={channelID}
+                      chatClient={chatClient}
+                    />
+                  }
+                />
+              )}
+            </Routes>
+          </div>
+          <div className="home-nav-container">
+            <Nav handleSignout={handleSignout} />
+            {/* <button className="signoutBtn" onClick={handleSignout}>
+              Signout
+            </button> */}
+          </div>
+        </div>
+        {/* <div className="home-content-container">
           <Routes>
             <Route
               path="/"
@@ -67,7 +101,7 @@ export default function Homescreen({
           <button className="signoutBtn" onClick={handleSignout}>
             Signout
           </button>
-        </div>
+        </div> */}
       </BrowserRouter>
     </>
   );

@@ -1,11 +1,9 @@
 .register-container {
   width: 100svw;
   height: 100svh;
-  /* border: 1px solid red; */
   display: flex;
   justify-content: center;
   padding: 28svh 10svw;
-  /* align-items: center; */
 }
 .register-card {
   position: relative;
@@ -15,28 +13,22 @@
   align-items: center;
   border-radius: 10px;
   background-color: var(--dgray-color);
-  /* padding: 1rem 2rem; */
   padding: 3vh 8vw;
-  /* border: 1px solid green; */
   box-shadow: var(--shadow-2);
 }
 .form-container {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   padding: 1rem;
-  /* border: 1px solid pink; */
   height: 80%;
   width: 100%;
 }
 .register-card h1 {
   margin-bottom: 1rem;
-  /* border: 1px solid blue; */
   color: white;
 }
 .register-input {
   font-family: inherit;
-  /* background-color: ; */
   border-radius: 20px;
   border: none;
   padding-left: 4vw;
@@ -53,10 +45,9 @@
 .button-container {
   display: flex;
   width: 100%;
-  /* align-items: center; */
   justify-content: center;
 }
-.backbtn-container a {
+.backbtn-container button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,21 +70,18 @@
   display: flex;
   margin-top: 10vh;
   background-color: #313b5c;
-  /* width: 100%; */
   border-radius: 20px;
   height: 20rem;
   text-align: center;
   justify-content: center;
 }
-.backbtn-container ion-icon {
+.backbtn-container button ion-icon {
   font-size: 1.8rem;
 }
 #submit-register-btn {
-  /* margin-top: 0.5rem; */
   width: 80%;
   height: 3vh;
   background-color: var(--blue-color);
-  /* font-weight: 400; */
   border-radius: 20px;
   color: var(--white-color);
 }
