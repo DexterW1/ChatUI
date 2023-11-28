@@ -1,17 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./renderchannel.css";
 import { Link } from "react-router-dom";
-import { StreamChat } from "stream-chat";
-import {
-  Chat,
-  Channel,
-  Window,
-  ChannelHeader,
-  MessageList,
-  MessageInput,
-  ChannelList,
-} from "stream-chat-react";
-import Rendermessage from "./rendermessage";
+import Modal from "./modal";
 function convertTime(timestamp) {
   const date = new Date(timestamp);
   const hours = date.getHours();
@@ -30,6 +20,13 @@ function convertTime(timestamp) {
 export default function Renderchannel({ chatClient, setChannelID }) {
   const [channelData, setChannelData] = useState(null);
   const [channel, setChannel] = useState(null);
+  const [showCreateModal, setShowCreateModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const handleClose = () => {
+    setShowCreateModal(false);
+    setShowDeleteModal(false);
+    window.location.reload();
+  };
   useEffect(() => {
     console.log("This is chatClient right before filter", chatClient);
     const filter = {
@@ -62,12 +59,32 @@ export default function Renderchannel({ chatClient, setChannelID }) {
   return (
     <>
       <div className="channel-container">
-        <button className=" channel-container-btn delete-channel-btn">
+        <button
+          onClick={() => setShowDeleteModal(true)}
+          className=" channel-container-btn delete-channel-btn"
+        >
           <ion-icon name="close-circle-outline"></ion-icon>
         </button>
-        <button className="channel-container-btn create-channel-btn">
+        <Modal
+          showCreateModal={showCreateModal}
+          showDeleteModal={showDeleteModal}
+          onClose={handleClose}
+          chatClient={chatClient}
+          channelData={channelData}
+        />
+        <button
+          onClick={() => setShowCreateModal(true)}
+          className="channel-container-btn create-channel-btn"
+        >
           <ion-icon name="create-outline"></ion-icon>
         </button>
+        <Modal
+          showCreateModal={showCreateModal}
+          showDeleteModal={showDeleteModal}
+          onClose={handleClose}
+          chatClient={chatClient}
+          channelData={channelData}
+        />
       </div>
       <div className="sidebar-container">
         {channelData.map((item) => (
@@ -84,11 +101,10 @@ export default function Renderchannel({ chatClient, setChannelID }) {
                 <div className="card-preview">
                   <h1>{item.data.name}</h1>
                   <p>
-                    {
+                    {item.state.messageSets[0].messages.length > 0 &&
                       item.state.messageSets[0].messages[
                         item.state.messageSets[0].messages.length - 1
-                      ].text
-                    }
+                      ].text}
                   </p>
                 </div>
                 <div className="card-time-container">
@@ -101,7 +117,6 @@ export default function Renderchannel({ chatClient, setChannelID }) {
             </div>
           </Link>
         ))}
-        {/* {channel && <Rendermessage chatClient={chatClient} channel={channel} />} */}
       </div>
     </>
   );

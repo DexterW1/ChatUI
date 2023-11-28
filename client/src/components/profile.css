@@ -1,0 +1,94 @@
+.profile-container {
+  width: 100svw;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 7svh;
+  padding: 2rem;
+  align-items: center;
+}
+.profileheader-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid green;
+}
+.profile-image-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profile-image-container img {
+  border-radius: 100%;
+  width: 40%;
+  object-fit: contain;
+  border: 4px solid white;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+.image-overlay {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 2.9%;
+  width: 47%;
+  height: 81%;
+  border-radius: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+  cursor: pointer;
+}
+.profile-image:hover + .image-overlay,
+.image-overlay:hover {
+  opacity: 1;
+}
+.profileheader-container p {
+  display: flex;
+  align-items: center;
+  color: white;
+  background-color: var(--blue-color);
+  border-radius: 20px;
+  padding: 0.5rem;
+}
+.profileheader-container p button {
+  display: flex;
+  align-items: center;
+  margin-left: 0.5rem;
+  padding: 0.3rem;
+}
+.copy-alert {
+  position: absolute;
+  bottom: 20%;
+  right: 0;
+  padding: 0.3rem;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.updateprofile-container {
+}
+.image-picker-container {
+  top: 0;
+  left: 0;
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
+  /* height: 100%; */
+  background-color: rgba(0, 0, 0, 0.6);
+  margin: 2vh 0;
+  /* border: 1px solid red; */
+}
+.image-picker-container img {
+  width: 20%;
+  border-radius: 100%;
+  margin: 0.5rem;
+  object-fit: contain;
+}

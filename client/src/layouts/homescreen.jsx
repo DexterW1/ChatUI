@@ -2,6 +2,7 @@ import "./homescreen.css";
 import { useState, useEffect } from "react";
 import { StreamChat } from "stream-chat";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Profile from "../components/profile";
 import {
   Chat,
   Channel,
@@ -26,16 +27,15 @@ export default function Homescreen({
   setChatClient,
 }) {
   const [channelID, setChannelID] = useState(null);
-  const handleCreateChannel = async () => {
-    const channel = chatClient.channel("messaging", "redbull", {
-      image: "https://picsum.photos/200",
-      name: "Randoms",
-      members: [user.uid, "e86JGI3s3uWqzuhirWTLri7bWf42"],
-    });
-    await channel.watch();
-    console.log(chatClient);
-  };
-  console.log("THis is channelID", channelID);
+  // const handleCreateChannel = async () => {
+  //   const channel = chatClient.channel("messaging", "redbull", {
+  //     image: "https://picsum.photos/200",
+  //     name: "Randoms",
+  //     members: [user.uid, "e86JGI3s3uWqzuhirWTLri7bWf42"],
+  //   });
+  //   await channel.watch();
+  //   console.log(chatClient);
+  // };
   return (
     <>
       <BrowserRouter>
@@ -64,6 +64,7 @@ export default function Homescreen({
                   }
                 />
               )}
+              <Route path="/Profile" element={<Profile chatClient={chatClient}/>}/>
             </Routes>
           </div>
           <div className="home-nav-container">

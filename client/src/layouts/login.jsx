@@ -120,42 +120,6 @@ export default function Login({ setUser, setChatClient }) {
           </div>
         </div>
       )}
-      {/* <div className="login-container">
-        <div className="login-card">
-          <h1>Login</h1>
-          <form className="form-container" onSubmit={handleLogin}>
-            <div className="email-container">
-              <input
-                className="login-input"
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                placeholder="Email Address"
-              />
-            </div>
-            <div className="password-container">
-              <input
-                className="login-input"
-                type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleInputChange}
-                placeholder="••••••••••"
-              />
-            </div>
-            <div className="button-container">
-              <button id="submit-login-btn" type="submit">
-                Login
-              </button>
-            </div>
-            <div className="signup-container">
-              <p>Don't have an account?</p>
-              <a onClick={handleRegistrationToggle}>Register</a>
-            </div>
-          </form>
-        </div>
-      </div> */}
 
       {showRegistration && (
         <Register handleRegistrationToggle={handleRegistrationToggle} />

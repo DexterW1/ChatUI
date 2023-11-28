@@ -1,0 +1,69 @@
+.overlay {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  padding: 20vh 2vw;
+}
+.create-channel-card {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid green; */
+  background-color: whitesmoke;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+}
+.create-channel-card input {
+  padding: 1rem;
+}
+.create-channel-btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid red;
+}
+
+.delete-channel-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid green;
+  background-color: white;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+}
+.delete-channel-card ul {
+  list-style: none;
+}
+.delete-channel-card li {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+.checkbox-style {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid var(--outline-color);
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+.checkbox-style:checked {
+  background-color: var(--blue-color);
+}
+
+.delete-channel-btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -13,7 +13,7 @@ export default function Nav({ handleSignout }) {
               <ion-icon name="home-outline"></ion-icon>
             </Link>
           </li>
-          <li key="rofile">
+          <li key="profile">
             <Link to="/Profile">
               <ion-icon name="person-circle-outline"></ion-icon>
             </Link>

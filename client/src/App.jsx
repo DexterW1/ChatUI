@@ -29,7 +29,7 @@ function App() {
         const streamUser = {
           id: authUser.uid,
           name: authUser.displayName,
-          image: "https://picsum.photos/200",
+          // image: "https://picsum.photos/200",
         };
 
         setUser(authUser);
@@ -41,6 +41,7 @@ function App() {
         );
         await client.connectUser(streamUser, client.devToken(authUser.uid));
         setChatClient(client);
+        console.log("entered authUser");
       } else {
         // await signOut(auth);
         setUser(null);
